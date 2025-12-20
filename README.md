@@ -1,2 +1,24 @@
-# safe-runner-sample
-A sample of SafeRunner: fully auditable, zero-retention analysis of Tesla Q3 2024 report
+# SafeRunner Sample: Tesla Q3 2024 Risk Analysis
+
+This is a **fully auditable, zero-retention** analysis of Tesla's Q3 2024 update.
+
+## 🔍 What It Does
+- Input: Public PDF URL (`TSLA-Q3-2024-Update.pdf`)
+- Output: Structured risk summary + full execution log
+- Includes: input hash, token usage, timestamps, step status
+- **No data stored. Container destroyed after task.**
+
+## 🧠 Why It Matters
+Most AI tools hide their inputs and hallucinate.  
+SafeRunner proves you can automate high-risk professional tasks **without compromising trust**.
+
+> "You sell not compute, but the ability to complete high-risk tasks with peace of mind."
+
+## 📂 Files
+- [`sr-20251220-100033_result.json`](sr-20251220-100033_result.json) — Full output
+- [`philosophy.md`](philosophy.md) *(optional)* — Our design principles
+
+## 💬 Try It?
+If you manually parse financial reports, I can run one for your document — free, no signup. Just DM a PDF URL.
+
+👉 [View this sample on Gist](https://gist.github.com/shaorain987/a01126f441c8563cf3ab49212fde2908)
