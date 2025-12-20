@@ -15,10 +15,10 @@ SafeRunner proves you can automate high-risk professional tasks **without compro
 > "You sell not compute, but the ability to complete high-risk tasks with peace of mind."
 
 ## 📂 Files
-- [`sr-20251220-100033_result.json`](sr-20251220-100033_result.json) — Full output
-- [`philosophy.md`](philosophy.md) *(optional)* — Our design principles
+- [`philosophy.md`](philosophy.md)  — Our design principles
 
 ## 💬 Try It?
 If you manually parse financial reports, I can run one for your document — free, no signup. Just DM a PDF URL.
+
 
 👉 [View this sample on Gist](https://gist.github.com/shaorain987/a01126f441c8563cf3ab49212fde2908)
