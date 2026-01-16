@@ -1,0 +1,4 @@
+dashscope>=1.18.0
+pdfplumber>=0.11.0
+beautifulsoup4>=4.12.0
+python-dotenv>=1.0.0

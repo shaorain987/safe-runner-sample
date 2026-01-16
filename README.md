@@ -19,9 +19,12 @@ SafeRunner proves you can automate high-risk professional tasks **without compro
 ## 📂 Files
 - [`philosophy.md`](philosophy.md)  — Our design principles
 
+## 🔐 Setup
+1. `pip install -r requirements.txt`
+2. `copy .env.example .env` and fill in your [DashScope API Key](https://dashscope.console.aliyun.com/apiKey)
+
 ## 💬 Try It?
 If you manually parse financial reports, I can run one for your document — free, no signup. Just DM a PDF URL.
 
 
 👉 [View this sample on Gist](https://gist.github.com/shaorain987/a01126f441c8563cf3ab49212fde2908)
-

@@ -1,6 +1,7 @@
 import json
 import hashlib
 import os
+from dotenv import load_dotenv
 from datetime import datetime, timezone
 from dashscope import Generation
 
@@ -16,18 +17,25 @@ try:
 except ImportError:
     HAS_BS4 = False
 
+load_dotenv()
 
 with open("config.json", "r", encoding="utf-8") as f:
     config = json.load(f)
 
-DASHSCOPE_API_KEY = config["dashscope_api_key"]
-MODEL = config["model"]
-DOCUMENT_PATH = config["document_path"]  
+DASHSCOPE_API_KEY = os.getenv("DASHSCOPE_API_KEY")
+if not DASHSCOPE_API_KEY:
+    raise ValueError(
+        "❌ DASHSCOPE_API_KEY is not set.\n"
+        "Please create a `.env` file and add your API key.\n"
+        "See `.env.example` for reference."
+    )
 
+MODEL = config["model"]
+DOCUMENT_PATH = config["document_path"]
 
 def extract_text_from_pdf(pdf_path: str) -> str:
     if not HAS_PDF:
-        raise ImportError("请安装 pdfplumber: pip install pdfplumber")
+        raise ImportError("Please install pdfplumber: pip install pdfplumber")
     text = ""
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages[:10]: 
@@ -39,7 +47,7 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 
 def extract_text_from_html_file(html_path: str) -> str:
     if not HAS_BS4:
-        raise ImportError("请安装 beautifulsoup4: pip install beautifulsoup4")
+        raise ImportError("Please install beautifulsoup4: pip install beautifulsoup4")
     with open(html_path, "r", encoding="utf-8", errors="ignore") as f:
         content = f.read()
     soup = BeautifulSoup(content, 'html.parser')
@@ -50,7 +58,7 @@ def extract_text_from_html_file(html_path: str) -> str:
 
 
 def call_qwen(prompt: str):
-    print("🧠 调用 Qwen...")
+    print("🧠 Calling Qwen...")
     response = Generation.call(
         model=MODEL,
         messages=[{"role": "user", "content": prompt}],
@@ -59,19 +67,19 @@ def call_qwen(prompt: str):
         result_format="message"
     )
     if response.status_code != 200:
-        raise Exception(f"Qwen 错误: {response}")
+        raise Exception(f"Qwen error: {response}")
     content = response.output.choices[0].message["content"]
     usage = response.usage
-    print(f"✅ Qwen 返回 ({usage.input_tokens} → {usage.output_tokens} tokens)")
+    print(f"✅ Qwen response ({usage.input_tokens} → {usage.output_tokens} tokens)")
     return content, usage
 
 
 def main():
     session_id = f"sr-{datetime.now(timezone.utc).strftime('%Y%m%d-%H%M%S')}"
-    print(f"🚀 启动 SafeRunner (本地文件模式) | ID: {session_id}")
+    print(f"🚀 Starting SafeRunner (local file mode) | ID: {session_id}")
 
     if not os.path.exists(DOCUMENT_PATH):
-        raise FileNotFoundError(f"❌ 文件不存在: {os.path.abspath(DOCUMENT_PATH)}")
+        raise FileNotFoundError(f"❌ File not found: {os.path.abspath(DOCUMENT_PATH)}")
 
     with open(DOCUMENT_PATH, "rb") as f:
         file_bytes = f.read()
@@ -82,16 +90,16 @@ def main():
     elif DOCUMENT_PATH.lower().endswith(('.html', '.htm')):
         full_text = extract_text_from_html_file(DOCUMENT_PATH)
     else:
-        raise ValueError("仅支持 .pdf / .html / .htm 文件")
+        raise ValueError("Only .pdf, .html, and .htm files are supported.")
 
-    print(f"🔖 哈希: {input_hash[:16]}...")
-    print(f"📄 提取 {len(full_text)} 字")
+    print(f"🔖 Hash: {input_hash[:16]}...")
+    print(f"📄 Extracted {len(full_text)} characters")
 
     prompt = f"""
-你是一位分析师。请总结以下文档的核心内容，并指出任何潜在风险或重要事项。
-仅输出 JSON，格式：{{"summary": "...", "key_risks": ["...", "..."]}}
+You are a financial analyst. Summarize the core content of the following document and highlight any potential risks or key issues.
+Output ONLY valid JSON in the format: {{"summary": "...", "key_risks": ["...", "..."]}}
 
-文档内容：
+Document content:
 {full_text[:12000]}
 """
 
@@ -122,7 +130,7 @@ def main():
     with open(output_file, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
-    print(f"\n🎉 成功！结果已保存至: {os.path.abspath(output_file)}")
+    print(f"\n🎉 Success! Result saved to: {os.path.abspath(output_file)}")
 
 
 if __name__ == "__main__":
