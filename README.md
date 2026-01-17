@@ -31,5 +31,6 @@ If you manually parse financial reports, I can run one for your document — fre
 > 🇨🇳 **For Users in China**  
 > If GitHub/Gist loads slowly, view the sample via domestic mirrors:  
 > - 📊 **Analysis Report**: [
-https://docs.qq.com/doc/DQ2JMRkt3aW9zUGRh] (wechat-friendly)  
+https://docs.qq.com/doc/DQ2JMRkt3aW9zUGRh] 
+
 > - 💻 **Source Code**: [https://wwbnh.lanzout.com/itYNE3gaxngh] (password: `sr26`)
