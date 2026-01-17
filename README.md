@@ -26,5 +26,10 @@ SafeRunner proves you can automate high-risk professional tasks **without compro
 ## 💬 Try It?
 If you manually parse financial reports, I can run one for your document — free, no signup. Just DM a PDF URL.
 
+---
 
-👉 [View this sample on Gist](https://gist.github.com/shaorain987/a01126f441c8563cf3ab49212fde2908)
+> 🇨🇳 **For Users in China**  
+> If GitHub/Gist loads slowly, view the sample via domestic mirrors:  
+> - 📊 **Analysis Report**: [
+https://docs.qq.com/doc/DQ2JMRkt3aW9zUGRh] (wechat-friendly)  
+> - 💻 **Source Code**: [https://wwbnh.lanzout.com/itYNE3gaxngh] (password: `sr26`)
