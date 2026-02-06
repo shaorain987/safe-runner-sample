@@ -1,36 +1,40 @@
-# SafeRunner Sample: Auditable AI Analysis of Tesla's Q3 2024 SEC Filing (Zero-Retention)
+# SafeRunner
 
-This is a **fully auditable, zero-retention AI analysis** of Tesla’s Q3 2024 update — built to demonstrate how financial reports can be processed with transparency and privacy.
+Auditable, zero-retention AI analysis of financial filings.  
+No data stored. Container destroyed after task. Input hash verified.
 
-> 💡 *No data stored. Container destroyed after task. Input hash verified.*
+## Why It Matters
 
-## 🔍 What It Does
-- **Input**: Public PDF URL (`TSLA-Q3-2024-Update.pdf`)
-- **Output**: Structured risk summary + full execution log
-- **Includes**: input hash, token usage, timestamps, step status
-- **Privacy**: No data retained. Full pipeline reproducible.
+Most AI tools hallucinate and hide their inputs.  
+SafeRunner delivers high-risk professional automation **with verifiable trust**:
 
-## 🧠 Why It Matters
-Most AI tools hide their inputs and hallucinate.  
-SafeRunner proves you can automate high-risk professional tasks **without compromising trust**.
+> You sell not compute, but the ability to complete high-risk tasks with peace of mind.
 
-> "You sell not compute, but the ability to complete high-risk tasks with peace of mind."
+## What It Does
 
-## 📂 Files
-- [`philosophy.md`](philosophy.md)  — Our design principles
+- **Input**: Machine-readable financial document (PDF or SEC HTML)  
+- **Output**: Structured JSON with risk summary + full audit log  
+- **Audit Trail**: input hash, token usage, timestamps, step status  
+- **Privacy**: Zero retention. Full pipeline reproducible.
 
-## 🔐 Setup
-1. `pip install -r requirements.txt`
-2. `copy .env.example .env` and fill in your [DashScope API Key](https://dashscope.console.aliyun.com/apiKey)
+## Try It
 
-## 💬 Try It?
-If you manually parse financial reports, I can run one for your document — free, no signup. Just DM a PDF URL.
+A sample NVIDIA FY2025 10-K filing is included:
 
----
+- File: [`samples/nvda-2025-10k.htm`](samples/nvda-2025-10k.htm)  
+- SHA256: `c46f21be4a2293234a5e8d9b0ede6056a89f127d9a4a7945448daa3692903826`
 
-> 🇨🇳 **For Users in China**  
-> If GitHub/Gist loads slowly, view the sample via domestic mirrors:  
-> - 📊 **Analysis Report**: [
-https://docs.qq.com/doc/DQ2JMRkt3aW9zUGRh] 
-
-> - 💻 **Source Code**: [https://wwbnh.lanzout.com/itYNE3gaxngh] (password: `sr26`)
+To run:
+```bash
+git clone https://github.com/yourname/safe-runner.git
+cd safe-runner
+pip install -r requirements.txt
+cp .env.example .env  # add your DashScope API key
+python main.py
+```
+Output appears in results/sr-*.json.
+Verify input integrity:
+```bash
+sha256sum samples/nvda-2025-10k.htm
+# Expected: c46f21be4a2293234a5e8d9b0ede6056a89f127d9a4a7945448daa3692903826
+```
