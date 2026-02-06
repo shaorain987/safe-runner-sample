@@ -6,7 +6,7 @@ No data stored. Container destroyed after task. Input hash verified.
 ## Why It Matters
 
 Most AI tools hallucinate and hide their inputs.  
-SafeRunner delivers high-risk professional automation **with verifiable trust**:
+SafeRunner delivers high-risk professional automation **with verifiable trust**
 
 ## What It Does
 
