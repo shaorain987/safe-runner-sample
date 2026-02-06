@@ -8,8 +8,6 @@ No data stored. Container destroyed after task. Input hash verified.
 Most AI tools hallucinate and hide their inputs.  
 SafeRunner delivers high-risk professional automation **with verifiable trust**:
 
-> You sell not compute, but the ability to complete high-risk tasks with peace of mind.
-
 ## What It Does
 
 - **Input**: Machine-readable financial document (PDF or SEC HTML)  
